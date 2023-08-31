@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+    {% load static %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,17 +10,17 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="clooapse navbar-collapse" id="navbarTogglerDemo01">
-            <a href="#" class="navbar-brand">
+            <a href="{% url 'index' %}" class="navbar-brand">
                 <h4>My own School</h4>
             </a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{% url 'admin:index' %}" class="nav-link">
                         <h4>Admin panel</h4>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{% url 'upload-book' %}" class="nav-link">
                         <h4>Upload Books</h4>
                     </a>
                 </li>
@@ -27,37 +28,11 @@
         </div>
     </nav>
     <br>
-    <div class="container-fluid">
-        <h4 class="text-center p-5">
-            Mine own school - best school of mining
-        </h4>
-        <div class="card-columns">
-            <div class="card" style="width: 18rem">
-                <img src="#"  class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Book name</h5>
-                    <p class="card-text">Book description</p>
-                    <div class="card-footer bg-transparent border-dark">
-                        <p class="card-title">Book Author</p>
-                        <center>
-                            <a href="#" class="btn btn-primary" id="#">Edit</a>
-                            <a href="#" class="btn btn-danger" id="#">Delete</a>
-                        </center>
-                    </div>
 
-
-                </div>
-            
-            </div>
-        </div>
-
-
-
-    </div>
-
-    
     {% block content %}
-    {% endblock %}
+    
+
+    {% endblock content %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>

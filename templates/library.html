@@ -1,4 +1,40 @@
 {% extends 'base.html' %}
 
+
+
 {% block content %}
+
+<div class="container-fluid">
+    <h4 class="text-center p-5">
+        Mine own school - best school of mining
+    </h4>
+    <div class="card-columns">
+        {% for b in shelf %}
+        <div class="card" style="width: 18rem; float:left; margin-right: 5px; margin-left:5px">
+            <img src="{{b.picture.url}}"  class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{b.name}}</h5>
+                <p class="card-text">{{b.description}}</p>
+                <div class="card-footer bg-transparent border-dark">
+                    <p class="card-title">{{b.author}}</p>
+                    <center>
+                        <a href="{% url 'update_book' b.id %}" class="btn btn-primary" id="">Edit</a>
+                        <a href="{% url 'delete_book' b.id %}" class="btn btn-danger" id="">Delete</a>
+                    </center>
+                </div>
+
+
+            </div>
+        
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+
+
+
 {% endblock %}

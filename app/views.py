@@ -18,4 +18,27 @@ def upload(request):
         else:
             return HttpResponse(""" Something went wrong """)
     else:
-        return render(request, 'upload_form.html', {'upload_form': upload})
+        return render(request, 'upload_forms.html', {'upload_form': upload})
+
+def update_book(request, book_id):
+    book_id = int(book_id)
+
+    try:
+        book_shelf = Book.objects.get(id=book_id)
+    except Book.DoesNotExist:
+        return redirect('index')
+    book_form = BookCreate(request.POST or None, instance = book_shelf)
+    if book_form.is_valid():
+        book_form.save()
+        return redirect('index')
+    return render(request, 'upload_forms.html', {'upload_form': book_form})
+    
+def delete_book(request, book_id):
+    book_id = int(book_id)
+    try:
+        book_shelf = Book.objects.get(id=book_id)
+    except Book.DoesNotExist:
+        return redirect('index')
+    book_shelf.delete()
+    return redirect('index')
+
